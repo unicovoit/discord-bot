@@ -6,7 +6,7 @@ const { Client, Collection, GatewayIntentBits, Routes } = discord_js;
 import { fileURLToPath } from 'url';
 
 export const init = async () => {
-    const GUILD_ID = "927943017468416030";
+    const GUILD_ID = ["927943017468416030", "611563082447061005"];
     const CLIENT_ID = "957274939398975499";
     const TOKEN = process.env.DISCORD_TOKEN;
 
@@ -25,7 +25,19 @@ export const init = async () => {
 
     const rest = new REST({ version: '10' }).setToken(TOKEN);
 
-    rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: commands })
-        .then(() => console.log(`Successfully registered ${commands.length} application commands.`))
-        .catch(console.error);
+
+    for (const guild of GUILD_ID) {
+        try {
+            console.log('Started refreshing application (/) commands.');
+
+            await rest.put(
+                Routes.applicationGuildCommands(CLIENT_ID, guild),
+                { body: commands },
+            );
+
+            console.log(`Successfully reloaded ${commands.length} application (/) commands to ${guild}.`);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
