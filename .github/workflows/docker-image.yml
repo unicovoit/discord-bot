@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: registry.ozna.me
-  IMAGE_NAME: moodisc
+  IMAGE_NAME: unicovoit-bot
 
 jobs:
   build:
