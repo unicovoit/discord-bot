@@ -1,0 +1,18 @@
+{
+    "name": "unicovoit-discord-bot",
+    "version": "0.0.1",
+    "description": "UniCovoit - Carpool platform for students",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "author": "UniCovoit <contact@unicovoit.fr>",
+    "license": "AGPL-3.0",
+    "dependencies": {
+        "discord.js": "^14.3.0",
+        "discord-api-types": "^0.37.8",
+        "@discordjs/rest": "^1.1.0",
+        "axios": "^0.27.2"
+    }
+}
