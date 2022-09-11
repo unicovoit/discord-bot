@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  unicovoit-bot:
+    image: unicovoit-bot:latest
+    container_name: unicovoit-bot
+    restart: always
+    env_file:
+      - .env
