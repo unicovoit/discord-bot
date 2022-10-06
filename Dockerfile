@@ -14,6 +14,11 @@ RUN pnpm install
 
 RUN apk --no-cache add dumb-init
 
+# change timezone
+RUN apk add --no-cache tzdata
+ENV TZ=Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 USER node
 
 CMD ["dumb-init", "node", "--max-old-space-size=2048", "src/index.js"]
